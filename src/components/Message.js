@@ -1,11 +1,12 @@
 import React from 'react';
 
 export default function Message(props) {
-	console.log(props);
+	const { username, message } = props;
+
 	return (
 		<React.Fragment>
 			<p>
-				{props.username}: {props.message}
+				{username}: {message}
 			</p>
 		</React.Fragment>
 	);

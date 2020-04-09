@@ -24,7 +24,7 @@ export default function MessageForm({ handleMessageSubmit }) {
                 </label>
                 <label>
                     Message:
-                    <input name="message" type="text" value={fields.message} onChange={(e) => handleInput(e)} />
+                    <input name="message" type="text" value={fields.message} maxLength="200" size="200" onChange={(e) => handleInput(e)} />
                 </label>
                 <input type='submit' value='submit' />
             </form>
