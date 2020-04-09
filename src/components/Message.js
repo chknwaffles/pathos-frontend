@@ -5,9 +5,7 @@ export default function Message(props) {
 
 	return (
 		<React.Fragment>
-			<p>
-				{username}: {message}
-			</p>
+			<p> {username}: {message} </p>
 		</React.Fragment>
 	);
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/containers.css'
+import { Link } from 'react-router-dom';
+import '../styles/containers.css';
 
 export default function MainContainer() {
     return (
@@ -8,7 +9,8 @@ export default function MainContainer() {
                 Welcome to PathOS!
             </h1>
 
-            Sign in here.
+            <Link to='/signup'>Sign up here</Link>
+            <Link to='/login'>Login here</Link>
         </div>
     )
 }
