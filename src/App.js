@@ -30,12 +30,7 @@ function App(props) {
           <Route
             path="/login"
             component={FormContainer}
-            render={(porps) => <FormContainer form="login" {...props} />}
-          />
-          <Route
-            path="/signup"
-            component={FormContainer}
-            render={(porps) => <FormContainer form="signup" {...props} />}
+            render={(porps) => <FormContainer {...props} />}
           />
           <Route path="/about" component={About} />
           <Route path="/profile" component={Profile} />
