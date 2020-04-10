@@ -21,24 +21,18 @@ export default function ChatContainer() {
 
   return (
     <div className="chat-container">
-      <div className="columns is-mobile">
-        <div className="column is-four-fifths">
-          <div className="message-container">
-            {log.map((m, i) => (
-              <Message key={i} {...m} />
-            ))}
-          </div>
-          <MessageForm
-            className="message-form"
-            handleMessageSubmit={handleMessageSubmit}
-          />
-        </div>
-        <div className="column">
-          <div className='nav-panel'>
-            Nav Panel
-          </div>
-        </div>
+      <div className="message-container">
+        {log.map((m, i) => (
+          <Message key={i} {...m} />
+        ))}
       </div>
+      <MessageForm
+        className="message-form"
+        handleMessageSubmit={handleMessageSubmit}
+      />
+      <div className='nav-panel'>
+        Nav Panel
+        </div>
     </div>
   );
 }
