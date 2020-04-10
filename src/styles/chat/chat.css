@@ -1,0 +1,19 @@
+.message-container {
+  background-color: blue;
+  color: darkorange;
+  height: 80vh;
+}
+
+.message-form-container {
+  height: 10vh;
+  background-color: green;
+  color: red;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* //need to work out this lol */
+.message-form {
+  height: 80%;
+  width: 100%;
+}
