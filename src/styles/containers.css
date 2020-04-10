@@ -1,7 +1,13 @@
 .main-container {
-    background-color: paleturquoise;
+  background-color: paleturquoise;
+}
+
+.chat-container {
+  border-color: palevioletred;
 }
 
 .message-container {
-    border-color: palevioletred;
+  background-color: black;
+  color: darkorange;
+  height: 80vh;
 }

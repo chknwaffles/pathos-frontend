@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/containers.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/containers.css";
 
 export default function MainContainer() {
     return (
@@ -20,3 +20,4 @@ export default function MainContainer() {
         </div>
     )
 }
+
