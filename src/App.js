@@ -11,17 +11,14 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path='/'>
+          <Route exact path='/'>
             <MainContainer />
           </Route>
           <Route path='/chat'>
             <MessageContainer />
           </Route>
           <Route path='/login'>
-            <FormContainer form='login' />
-          </Route>
-          <Route path='/signup'>
-            <FormContainer form='signup' />
+            <FormContainer />
           </Route>
         </Switch>
       </div>
