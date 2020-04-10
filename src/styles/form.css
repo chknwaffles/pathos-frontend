@@ -1,0 +1,31 @@
+.form-container {
+    height: 100vh;
+    width: 15vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    padding: 1vh;
+    padding-left: 150vh;
+    padding-top: 30vh;
+}
+
+.login-form {
+
+}
+
+.tabs {
+    border: 1px solid green;
+}
+
+.tab {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}

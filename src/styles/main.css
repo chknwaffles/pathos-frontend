@@ -1,0 +1,29 @@
+.main-container {
+  background-color: whitesmoke;
+  display: flex;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+
+.body-section {
+  padding: 1vh;
+  padding-top: 40vh;
+  padding-left: 35vh;
+}
+
+.styled-link {
+  text-decoration: none;
+  color: darkslategrey;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .main-container {
+    height: 100%;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 1200px) {
+  .container {
+    width: 60%;
+  }
+}

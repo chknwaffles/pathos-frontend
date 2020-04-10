@@ -1,38 +1,29 @@
 import React, { useState } from 'react';
+import '../styles/form.css';
 
 export default function FormContainer() {
     const [form, setForm] = useState('login')
 
+    const handleForm = () => setForm(form === 'login' ? 'signup' : 'login')
+    const formTitle = () => {
+        return form === 'login' ? 'Login' : 'Sign Up'
+    }
+
     return (
         <div className='form-container'>
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email" />
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-check"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password" />
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <button className='button is-success'>
-                        Login
-                    </button>
-                    <button className='button is-light'>
-                        Go Back
-                    </button>
-                </p>
+            <div className='container'>
+                <div className='tabs'>
+                    <button className='tab' onClick={handleForm}>Sign up</button>
+                    <button className='tab' onClick={handleForm}>Login</button>
+                </div>
+                <form className='login-form'>
+                    <h2>{formTitle()}</h2>
+                    <input type="text" placeholder="Username" name="email" required />
+                    <input type="password" placeholder="Password" name="psw" required />
+
+                    <button type='submit'>{formTitle()}</button>
+
+                </form>
             </div>
         </div>
     )
