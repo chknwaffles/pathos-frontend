@@ -10,29 +10,36 @@ export default function ChatContainer() {
   const [chatroom, setChatroom] = useState("tru baller after hours");
   const [user, setUser] = useState("ballest fool in da street");
 
-  useEffect(() => {
-    const socket = io("localhost:5000");
-    socket.emit("yo");
-  }, [log]);
+  // useEffect(() => {
+  //   const socket = io("localhost:5000");
+  //   socket.emit("yo");
+  // }, [log]);
 
   const handleMessageSubmit = (message) => {
+    console.log(message)
     setLog([...log, message]);
   };
+
+  const renderChat = () => {
+    return log.map((message, i) => {
+      return <Message key={i} username={message.username} content={message.content} />
+    })
+  }
 
   return (
     <div className="chat-container">
       <div className="message-container">
-        {log.map((m, i) => (
-          <Message key={i} {...m} />
-        ))}
+        <div className="chat">
+          {renderChat()}
+        </div>
+        <MessageForm
+          handleMessageSubmit={handleMessageSubmit}
+        />
       </div>
-      <MessageForm
-        className="message-form"
-        handleMessageSubmit={handleMessageSubmit}
-      />
+
       <div className='nav-panel'>
         Nav Panel
-        </div>
+      </div>
     </div>
   );
 }

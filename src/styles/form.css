@@ -3,16 +3,14 @@
     width: 15vh;
     display: flex;
     flex-wrap: wrap;
+    background-color: whitesmoke;
 }
 
 .container {
     padding: 1vh;
     padding-left: 150vh;
     padding-top: 30vh;
-}
-
-.login-form {
-
+    background-color: inherit;
 }
 
 .tabs {

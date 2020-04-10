@@ -17,8 +17,6 @@ import Profile from "./components/navbar/Profile";
 //below if u need to pass props
 ///https://stackoverflow.com/questions/52064303/reactjs-pass-props-with-redirect-component
 
-//adde exact={true} to our main container ..why? otherwise it acts as a catch all and other routes would be loaded no mater what.
-
 function App(props) {
   return (
     <Router>

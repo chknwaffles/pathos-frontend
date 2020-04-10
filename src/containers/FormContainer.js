@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import '../styles/form.css';
 
 export default function FormContainer() {
     const [form, setForm] = useState('login')
+    const history = useHistory()
 
     const handleForm = () => setForm(form === 'login' ? 'signup' : 'login')
     const formTitle = () => {
@@ -22,7 +24,7 @@ export default function FormContainer() {
                     <input type="password" placeholder="Password" name="psw" required />
 
                     <button type='submit'>{formTitle()}</button>
-
+                    <button type='button' onClick={history.goBack}>Go Back</button>
                 </form>
             </div>
         </div>

@@ -1,10 +1,52 @@
+.chat-container {
+  display: flex;
+  position: flex;
+  flex-wrap: wrap;
+  height: 90vh;
+  width: 90vw;
+  margin-top: 5vh;
+  margin-left: 5vh;
+  margin-right: 5vh;
+}
+
 .message-container {
-  background-color: blue;
-  color: darkorange;
+  display: inherit;
+  flex-direction: column;
+  height: 100%;
+  width: 1400px;
+  max-height: 1000px;
+}
+
+.chat {
+  display: inherit;
+  flex-direction: column;
+  height: 90%;
+  width: inherit;
+  overflow-y:scroll;
+}
+
+.nav-panel {
+  display: inherit;
+  height: 100%;
+  width: 325px;
+  border: 1px solid black;
 }
 
 .message-form-container {
-  background-color: green;
-  color: red;
+  border-top: 2px solid black;
+  display: flex;
+}
+
+input[type=text] {
+  box-sizing: border-box;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 0;
+  width: 80%;
+  font-size: 1.0em;
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: none;
 }
 
