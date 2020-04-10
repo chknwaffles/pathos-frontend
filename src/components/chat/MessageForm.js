@@ -18,15 +18,8 @@ export default function MessageForm({ handleMessageSubmit }) {
   return (
     <div className="message-form-container">
       <form onSubmit={handleSubmit}>
-        <input
-          className="message-form"
-          name="message"
-          type="text"
-          value={fields.message}
-          maxLength="200"
-          onChange={(e) => handleInput(e)}
-        />
-        <input type="submit" value="submit" />
+        <input class="input" type="text" placeholder="Type your message here" />
+        <button class="button">Submit</button>
       </form>
     </div>
   );

@@ -23,7 +23,6 @@ function App(props) {
   return (
     <Router>
       <div className="App">
-        <NavBar />
         <Switch>
           <Route exact={true} path="/" component={MainContainer} />
           <Route path="/chat" component={ChatContainer} />
