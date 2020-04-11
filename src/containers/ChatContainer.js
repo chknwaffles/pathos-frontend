@@ -12,23 +12,22 @@ const URL = process.env.REACT_APP_URL || "http://localhost:5000";
 export default function ChatContainer() {
   const [log, setLog] = useState([]);
   const [chatroom, setChatroom] = useState("");
-  const [user, setUser] = useState({ username: "test user" });
+  const [user, setUser] = useState({});
   /// I think just leave the socket here is fine... no? then turn it off from the front end when the user logs out or the connection is loss for x amount of time from the backend
   const socket = io(URL);
 
   useEffect(() => {
-    async function fetchDefaultUser() {
+    async function fetchDefaulChatroom() {
       try {
-        const userRes = await fetch(URL + "/users/defaultuser");
-        console.log(userRes);
-        const chatroomRes = await fetch(URL + "/chatrooms/chatrooms");
-        console.log(chatroomRes);
+        const chatroomRes = await (
+          await fetch(URL + "/chatrooms/defaultchatroom")
+        ).json();
+        setChatroom(chatroomRes);
       } catch (err) {
         console.error(err);
       }
     }
-
-    fetchDefaultUser();
+    fetchDefaulChatroom();
   }, []);
 
   useEffect(() => {
@@ -38,7 +37,8 @@ export default function ChatContainer() {
   }, [log]);
 
   const handleMessageSubmit = async (message) => {
-    message["chatroom"] = chatroom;
+    message["chatroom_id"] = chatroom.id;
+    message["user_id"] = user.id;
     await socket.emit("sendMessage", message, () => {});
     setLog([...log, message]);
   };
@@ -56,14 +56,60 @@ export default function ChatContainer() {
     });
   };
 
+  const fetchDefaultUserOne = async () => {
+    try {
+      const userRes = await (await fetch(URL + "/users/defaultuser/1")).json();
+      setUser(userRes);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const renderSocketTesting = () => {
+    if (user.username == "default user 1") {
+      return (
+        <>
+          <InfoBar className="info-bar" URL={URL} activeUser={true} />
+          <div className="chatroom">
+            <div className="chat-log">{renderChat()}</div>
+            <MessageForm
+              user={user}
+              handleMessageSubmit={handleMessageSubmit}
+            />
+          </div>
+        </>
+      );
+    } else
+      return (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            height: "30%",
+            justifyContent: "space-evenly",
+          }}
+        >
+          {" "}
+          <button
+            style={{
+              height: "100%",
+              width: "50%",
+              fontSize: "5em",
+            }}
+            onClick={() => fetchDefaultUserOne()}
+          >
+            {" "}
+            CLICK ME 2 FETCH DAT USER{" "}
+          </button>{" "}
+        </div>
+      );
+  };
+
   return (
     <div className="chat-container">
       <NavBar className="navbar" />
-      <InfoBar className="info-bar" />
-      <div className="chatroom">
-        <div className="chat-log">{renderChat()}</div>
-        <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />
-      </div>
+
+      {renderSocketTesting()}
     </div>
   );
 }
