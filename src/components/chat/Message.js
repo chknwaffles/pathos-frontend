@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Message({ currentUser, username, content }) {
+export default function Message({ currentUser, user_id, username, content }) {
   let isSentByCurrentUser = false;
 
-  if (currentUser.username === username) {
+  if (currentUser.id === user_id) {
     isSentByCurrentUser = true;
   }
 
