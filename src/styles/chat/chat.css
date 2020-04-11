@@ -1,5 +1,7 @@
 /* I put these in the same order the page cascades to its not */
 
+/* Also you onlu need to import the css on the parent component so just at the chat container */
+
 /* 
 for the sizing i took 100% = full page of chat-container which is filles width/height of the full-screen
 then I divided it into % giving 

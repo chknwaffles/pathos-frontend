@@ -10,7 +10,7 @@ import InfoBar from "../components/chat/InfoBar";
 export default function ChatContainer() {
   const [log, setLog] = useState([]);
   const [chatroom, setChatroom] = useState("tru baller after hours");
-  const [user, setUser] = useState("ballest fool in da street");
+  const [user, setUser] = useState({ username: "test user" });
 
   useEffect(() => {
     const socket = io("localhost:5000");
@@ -27,6 +27,7 @@ export default function ChatContainer() {
       return (
         <Message
           key={i}
+          currentUser={user}
           username={message.username}
           content={message.content}
         />
@@ -40,7 +41,7 @@ export default function ChatContainer() {
       <InfoBar className="info-bar" />
       <div className="chatroom">
         <div className="chat-log">{renderChat()}</div>
-        <MessageForm handleMessageSubmit={handleMessageSubmit} />
+        <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />
       </div>
     </div>
   );
