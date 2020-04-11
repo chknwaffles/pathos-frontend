@@ -8,6 +8,7 @@ export default function Message({ currentUser, username, content }) {
   }
 
   const renderTimeStamp = () => {
+    // this sill be changed to createdAt ..once I get the sockets/db hooked up...just proof of concept for now
     const today = new Date();
     const date =
       today.getFullYear() +
