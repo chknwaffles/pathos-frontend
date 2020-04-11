@@ -1,9 +1,9 @@
 import React from "react";
-import NavBar from "./containers/NavBar";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "./styles/mainContainer.css";
 
 //containers
-import MainContainer from "./containers/MainContainer";
+import WelcomePageContainer from "./containers/WelcomePageContainer";
 import ChatContainer from "./containers/ChatContainer";
 import FormContainer from "./containers/FormContainer";
 
@@ -20,9 +20,9 @@ import Profile from "./components/navbar/Profile";
 function App(props) {
   return (
     <Router>
-      <div className="App">
+      <div className="main-container">
         <Switch>
-          <Route exact={true} path="/" component={MainContainer} />
+          <Route exact={true} path="/" component={WelcomePageContainer} />
           <Route path="/chat" component={ChatContainer} />
           <Route
             path="/login"

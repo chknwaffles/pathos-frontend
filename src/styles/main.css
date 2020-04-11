@@ -1,4 +1,4 @@
-.main-container {
+.welcome-page-container {
   background-color: whitesmoke;
   display: flex;
   height: 100vh;
@@ -17,7 +17,7 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .main-container {
+  .welcome-page-container {
     height: 100%;
   }
 }
