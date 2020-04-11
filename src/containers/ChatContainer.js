@@ -30,6 +30,7 @@ export default function ChatContainer() {
     fetchDefaulChatroom();
   }, []);
 
+  ///TO DO get messages from backend after they are persisted then broadcasted + auto fill chat history
   useEffect(() => {
     socket.on("messageBack", (message) => {
       setLog([...log, message]);
