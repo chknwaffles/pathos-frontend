@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 
-export default function MessageForm({ handleMessageSubmit }) {
-  const [fields, setFields] = useState({ username: "test", content: "" });
+export default function MessageForm({ handleMessageSubmit, user }) {
+  const [message, setMessage] = useState({
+    username: user.username,
+    content: "",
+  });
 
   const handleInput = (e) => {
-    setFields({ ...fields, [e.target.name]: e.target.value });
+    setMessage({ username: user.username, content: e.target.value });
   };
 
   // for some reason I have to have a return or something cant just putt null.. put an alert for now because i cant do a return on acccount of the fields not being cleared
   const handleSubmit = (e) => {
     e.preventDefault();
-    fields.content.length == 0
+    message.content.length == 0
       ? alert("Blank message say something yo")
-      : handleMessageSubmit(fields);
+      : handleMessageSubmit(message);
 
     //clear fields
-    setFields({ username: "test", content: "" });
+    setMessage({ username: user.username, content: "" });
   };
 
   return (
@@ -25,9 +28,9 @@ export default function MessageForm({ handleMessageSubmit }) {
           className="input"
           name="content"
           type="text"
-          value={fields.content}
+          value={message.content}
           size="200"
-          maxlength="200"
+          maxLength="200"
           onChange={handleInput}
           placeholder="Press enter to send your message."
         />
