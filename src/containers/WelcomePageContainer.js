@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/main.css";
+import FormContainer from "./FormContainer";
 
 export default function WelcomePageContainer() {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => setOpen(!open);
+
   return (
     <div className="welcome-page-container">
       <div className="body-section">
         <h1> Welcome to Pathos </h1>
-        <h2>
-          <Link className="styled-link" to="/login">
-            Click here to sign up or login.{" "}
-          </Link>
+        <h2 className="form-link" onClick={handleClick}>
+          Click here to sign up or login.
         </h2>
       </div>
+      <FormContainer open={open} handleClick={handleClick} />
     </div>
   );
 }

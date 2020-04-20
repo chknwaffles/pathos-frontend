@@ -16,6 +16,10 @@
   color: darkslategrey;
 }
 
+.form-link {
+  cursor: pointer;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
   .welcome-page-container {
     height: 100%;
