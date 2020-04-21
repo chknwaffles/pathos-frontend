@@ -9,10 +9,11 @@ import InfoBar from "../components/chat/InfoBar";
 
 const URL = process.env.REACT_APP_URL || "http://localhost:5000";
 
-export default function ChatContainer() {
+export default function ChatContainer(props) {
+  const { user, handleUserInfo } = props;
   const [log, setLog] = useState([]);
   const [chatroom, setChatroom] = useState("");
-  const [user, setUser] = useState("");
+
   /// I think just leave the socket here is fine... no? then turn it off from the front end when the user logs out or the connection is loss for x amount of time from the backend
   const socket = io(URL);
   /// default function loads in chatroom and the log we can use this logic to render other chat rooms in the future
@@ -51,7 +52,7 @@ export default function ChatContainer() {
   const handleMessageSubmit = async (message) => {
     message["chatroom_id"] = chatroom.id;
     message["user_id"] = user.id;
-    await socket.emit("sendMessage", message, () => {});
+    await socket.emit("sendMessage", message, () => { });
   };
 
   /// need to find a way to pass username with the user_id... because the sql return isn't like active record..I cant pull all the user info with it... I have to make a join query...will do more reseach on this.. in the meantime I am sorting by user id
@@ -73,7 +74,7 @@ export default function ChatContainer() {
   const fetchDefaultUserOne = async () => {
     try {
       const userRes = await (await fetch(URL + "/users/defaultuser/1")).json();
-      setUser(userRes);
+      handleUserInfo(userRes);
     } catch (err) {
       console.error(err);
     }
@@ -83,7 +84,7 @@ export default function ChatContainer() {
   const fetchSecondTestUser = async () => {
     try {
       const userRes = await (await fetch(URL + "/users/defaultuser/2")).json();
-      setUser(userRes);
+      handleUserInfo(userRes);
     } catch (err) {
       console.error(err);
     }
@@ -91,18 +92,16 @@ export default function ChatContainer() {
   //// just a function to test db/socket persistance, im not too comfortable with it yet, will be deleted later
   const renderSocketTesting = () => {
     return user ? (
-      <>
-        <div className="chatroom">
-          <div className="chat-log">{renderChat()}</div>
-          <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />
-        </div>
-      </>
+      <div className="chatroom">
+        <div className="chat-log">{renderChat()}</div>
+        <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />
+      </div>
     ) : (
-      <>
-        <button onClick={() => fetchDefaultUserOne()}> fetch user 1 </button>{" "}
-        <button onClick={() => fetchSecondTestUser()}>fetch user 2</button>
-      </>
-    );
+        <div className="test-container">
+          <button onClick={() => fetchDefaultUserOne()}> fetch user 1 </button>{" "}
+          <button onClick={() => fetchSecondTestUser()}>fetch user 2</button>
+        </div>
+      );
   };
 
   return (

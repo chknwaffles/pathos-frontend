@@ -9,8 +9,10 @@ export default function NavBar(props) {
 
   return (
     <div className="navbar">
-      <Link to="/about"> ABOUT </Link>
-      <Link to="/profile"> PROFILE </Link>
+      <Link className="nav-item" to="/about"> ABOUT </Link>
+      <Link className="nav-item" to="/profile"> PROFILE </Link>
+      <Link className="nav-item" to="/chat"> CHAT </Link>
+      <span className="nav-item"> LOGOUT </span>
     </div>
   );
 }

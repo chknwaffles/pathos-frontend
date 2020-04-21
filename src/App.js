@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./styles/mainContainer.css";
 
 //containers
@@ -18,16 +18,21 @@ import Profile from "./components/navbar/Profile";
 ///https://stackoverflow.com/questions/52064303/reactjs-pass-props-with-redirect-component
 
 function App(props) {
+  const [user, setUser] = useState("");
+
+  const handleUserInfo = (userInfo) => {
+    setUser(userInfo);
+    console.log(userInfo);
+  }
+
   return (
     <Router>
       <div className="main-container">
         <Switch>
           <Route exact={true} path="/" component={WelcomePageContainer} />
-          <Route path="/chat" component={ChatContainer} />
           <Route
-            path="/login"
-            component={FormContainer}
-            render={(porps) => <FormContainer {...props} />}
+            path="/chat"
+            render={(props) => <ChatContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
           />
           <Route path="/about" component={About} />
           <Route path="/profile" component={Profile} />

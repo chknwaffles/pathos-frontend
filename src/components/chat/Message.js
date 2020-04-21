@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../../styles/chat/message.css"
+
 export default function Message({ currentUser, user_id, username, content }) {
   let isSentByCurrentUser = false;
 
@@ -24,23 +26,11 @@ export default function Message({ currentUser, user_id, username, content }) {
 
   //// my styling is bad but the general idea is there
   return (
-    <p
-      style={{
-        padding: ".25em",
-        textAlign: isSentByCurrentUser ? "right" : "left",
-        overflowWrap: "normal",
-      }}
-    >
-      <span
-        style={{
-          fontSize: "1.5em",
-          backgroundColor: ` ${isSentByCurrentUser ? "yellow" : "green"}`,
-        }}
-      >
+    <p className="message">
+      <span> {username} </span>
+      <span className="message-body">
         {content}
       </span>
-      <br />
-      <label>- {username}</label>
       <br />
       <span>@ {renderTimeStamp()}</span>
     </p>

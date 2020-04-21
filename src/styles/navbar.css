@@ -1,9 +1,24 @@
 .navbar {
-  height: 10%;
+  height: 5%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  background-color: yellow;
+  justify-content: center;
+
+  border-radius: 20px;
+  border-top: 2px solid cornflowerblue;
+}
+
+.nav-item {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: black;
+  text-decoration: none;
 }
 
 /* @media only screen and (max-device-width: 450px) {
