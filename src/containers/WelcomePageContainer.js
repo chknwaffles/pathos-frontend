@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "../styles/main.css";
 import FormContainer from "./FormContainer";
 
-export default function WelcomePageContainer() {
+export default function WelcomePageContainer(props) {
+  const { handleUserInfo } = props;
   const [open, setOpen] = useState(false);
 
   const handleClick = () => setOpen(!open);
@@ -15,7 +16,7 @@ export default function WelcomePageContainer() {
           Click here to sign up or login.
         </h2>
       </div>
-      <FormContainer open={open} handleClick={handleClick} />
+      <FormContainer open={open} handleClick={handleClick} handleUserInfo={handleUserInfo} />
     </div>
   );
 }
