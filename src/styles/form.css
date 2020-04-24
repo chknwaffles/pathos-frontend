@@ -40,6 +40,18 @@
     font-size: 17px;
 }
 
+.tab.active {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    background-color: #4CAF50;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
