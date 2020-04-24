@@ -5,7 +5,6 @@ import "./styles/mainContainer.css";
 //containers
 import WelcomePageContainer from "./containers/WelcomePageContainer";
 import ChatContainer from "./containers/ChatContainer";
-import FormContainer from "./containers/FormContainer";
 
 //components
 import About from "./components/navbar/About";
@@ -22,6 +21,7 @@ function App(props) {
 
   const handleUserInfo = (userInfo) => {
     setUser(userInfo);
+
     console.log(userInfo);
   }
 
@@ -29,7 +29,11 @@ function App(props) {
     <Router>
       <div className="main-container">
         <Switch>
-          <Route exact={true} path="/" component={WelcomePageContainer} />
+          <Route
+            exact={true}
+            path="/"
+            render={(props) => <WelcomePageContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
+          />
           <Route
             path="/chat"
             render={(props) => <ChatContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
