@@ -29,7 +29,8 @@ export default function FormContainer(props) {
             const userRes = (await fetch(`${URL}/users/${form}`, config)).json();
             console.log(userRes);
 
-            handleUserInfo(userRes)
+            handleUserInfo(userRes);
+            handleClick();
         } catch (err) {
             console.log(err)
         }

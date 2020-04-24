@@ -21,6 +21,7 @@ function App(props) {
 
   const handleUserInfo = (userInfo) => {
     setUser(userInfo);
+
     console.log(userInfo);
   }
 
@@ -31,7 +32,7 @@ function App(props) {
           <Route
             exact={true}
             path="/"
-            render={(props) => <WelcomePageContainer {...props} handleUserInfo={handleUserInfo} />}
+            render={(props) => <WelcomePageContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
           />
           <Route
             path="/chat"
