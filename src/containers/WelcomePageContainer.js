@@ -12,8 +12,8 @@ export default function WelcomePageContainer(props) {
   const renderSubtitle = () => {
     if (user !== "") {
       return (
-        <h2 className="form-link">
-          <Link to="/chat">Click here to join the chat!</Link>
+        <h2 className="styled-link">
+          <Link className="styled-link" to="/chat">Click here to join the chat!</Link>
         </h2>
       )
     } else {

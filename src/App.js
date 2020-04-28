@@ -8,7 +8,7 @@ import ChatContainer from "./containers/ChatContainer";
 
 //components
 import About from "./components/navbar/About";
-import Profile from "./components/navbar/Profile";
+import ProfileContainer from "./containers/ProfileContainer";
 
 //re did the logic in login, we need to make sure if a user puts a different path they cant bypassthe login, I think router comes with a redirect logic we can write to pass back to regular url if no user is present ...its something like see below
 
@@ -34,12 +34,19 @@ function App(props) {
             path="/"
             render={(props) => <WelcomePageContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
           />
+          //could redo the redirect better
           <Route
             path="/chat"
-            render={(props) => <ChatContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
+            render={(props) => user ?
+              <ChatContainer {...props} user={user} handleUserInfo={handleUserInfo} /> :
+              <WelcomePageContainer {...props} user={user} handleUserInfo={handleUserInfo} />
+            }
+          />
+          <Route
+            path="/profile"
+            render={(props) => <ProfileContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
           />
           <Route path="/about" component={About} />
-          <Route path="/profile" component={Profile} />
         </Switch>
       </div>
     </Router>

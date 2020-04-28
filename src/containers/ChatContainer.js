@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import NavBar from "./NavBar";
 import "../styles/chat/chat.css";
 import "../styles/navbar.css";
-import MessageForm from "../components/chat/MessageForm";
+
+import NavBar from "./NavBar";
 import Message from "../components/chat/Message";
+import MessageForm from "../components/chat/MessageForm";
 import InfoBar from "../components/chat/InfoBar";
 
 const URL = process.env.REACT_APP_URL || "http://localhost:5000";
@@ -70,45 +71,52 @@ export default function ChatContainer(props) {
     });
   };
 
-  ///button action for fetch default user
-  const fetchDefaultUserOne = async () => {
-    try {
-      const userRes = await (await fetch(URL + "/users/defaultuser/1")).json();
-      handleUserInfo(userRes);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  ///button action for fetch 2nd default user
-
-  const fetchSecondTestUser = async () => {
-    try {
-      const userRes = await (await fetch(URL + "/users/defaultuser/2")).json();
-      handleUserInfo(userRes);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  //// just a function to test db/socket persistance, im not too comfortable with it yet, will be deleted later
-  const renderSocketTesting = () => {
-    return user ? (
-      <div className="chatroom">
-        <div className="chat-log">{renderChat()}</div>
-        <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />
-      </div>
-    ) : (
-        <div className="test-container">
-          <button onClick={() => fetchDefaultUserOne()}> fetch user 1 </button>{" "}
-          <button onClick={() => fetchSecondTestUser()}>fetch user 2</button>
-        </div>
-      );
-  };
-
   return (
     <div className="chat-container">
-      <NavBar className="navbar" />
+      <NavBar className="navbar" handleUserInfo={handleUserInfo} />
       <InfoBar className="info-bar" />
-      {renderSocketTesting()}
+
+      <div className="chatroom">
+        <div className="chat-log">
+          {renderChat()}
+        </div>
+        <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />
+      </div>
     </div>
   );
 }
+
+
+  // ///button action for fetch default user
+  // const fetchDefaultUserOne = async () => {
+  //   try {
+  //     const userRes = await (await fetch(URL + "/users/defaultuser/1")).json();
+  //     handleUserInfo(userRes);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+  // ///button action for fetch 2nd default user
+
+  // const fetchSecondTestUser = async () => {
+  //   try {
+  //     const userRes = await (await fetch(URL + "/users/defaultuser/2")).json();
+  //     handleUserInfo(userRes);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+  // //// just a function to test db/socket persistance, im not too comfortable with it yet, will be deleted later
+  // const renderSocketTesting = () => {
+  //   return user ? (
+  //     <div className="chatroom">
+  //       <div className="chat-log">{renderChat()}</div>
+  //       <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />
+  //     </div>
+  //   ) : (
+  //       <div className="test-container">
+  //         <button onClick={() => fetchDefaultUserOne()}> fetch user 1 </button>{" "}
+  //         <button onClick={() => fetchSecondTestUser()}>fetch user 2</button>
+  //       </div>
+  //     );
+  // };

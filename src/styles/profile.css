@@ -1,0 +1,16 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    height: 95vh;
+    width: 95vw;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.profile {
+    display: inherit;
+    flex-direction: column;
+    height: 750px;
+    border-radius: 20px;
+    border-bottom: 2px solid cornflowerblue;
+}

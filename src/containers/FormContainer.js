@@ -13,27 +13,39 @@ export default function FormContainer(props) {
         return form === 'login' ? 'Login' : 'Sign Up'
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        try {
-            const config = {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(fields),
+        const getUserData = async () => {
+            try {
+                const config = {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(fields),
+                }
+
+                const userRes = await fetch(`${URL}/users/${form}`, config)
+                const userData = await userRes.json();
+
+                return userData;
+            } catch (err) {
+                console.log(err)
             }
-
-            const userRes = (await fetch(`${URL}/users/${form}`, config)).json();
-            console.log(userRes);
-
-            handleUserInfo(userRes);
-            handleClick();
-        } catch (err) {
-            console.log(err)
         }
+
+        getUserData().then(data => {
+            if (data.success) {
+                console.log(data)
+                handleUserInfo(data.user)
+                localStorage.setItem('currentUser', JSON.stringify(data.user));
+                handleClick();
+            } else {
+                window.alert(data.message);
+            }
+        })
     }
 
     const handleChange = (e) => {
