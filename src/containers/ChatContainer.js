@@ -9,6 +9,7 @@ import MessageForm from "../components/chat/MessageForm";
 import InfoBar from "../components/chat/InfoBar";
 
 const URL = process.env.REACT_APP_URL || "http://localhost:5000";
+const socket = io(URL);
 
 export default function ChatContainer(props) {
   const { user, handleUserInfo } = props;
@@ -16,7 +17,6 @@ export default function ChatContainer(props) {
   const [chatroom, setChatroom] = useState("");
 
   /// I think just leave the socket here is fine... no? then turn it off from the front end when the user logs out or the connection is loss for x amount of time from the backend
-  const socket = io(URL);
   /// default function loads in chatroom and the log we can use this logic to render other chat rooms in the future
 
   useEffect(() => {
@@ -53,7 +53,8 @@ export default function ChatContainer(props) {
   const handleMessageSubmit = async (message) => {
     message["chatroom_id"] = chatroom.id;
     message["user_id"] = user.id;
-    await socket.emit("sendMessage", message, () => { });
+    await socket.emit("sendMessage", message);
+    await setLog([...log, message])
   };
 
   /// need to find a way to pass username with the user_id... because the sql return isn't like active record..I cant pull all the user info with it... I have to make a join query...will do more reseach on this.. in the meantime I am sorting by user id

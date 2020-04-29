@@ -4,8 +4,11 @@
   align-items: center;
   justify-content: center;
 
-  border-radius: 20px;
-  border-top: 2px solid cornflowerblue;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
 }
 
 .nav-item {
@@ -17,8 +20,19 @@
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 17px;
-  color: black;
   text-decoration: none;
+}
+
+@media (prefers-color-scheme: light) {
+  .nav-item {
+    color: #0B1114;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav-item {
+    color: #CCCCCC;
+  }
 }
 
 /* @media only screen and (max-device-width: 450px) {

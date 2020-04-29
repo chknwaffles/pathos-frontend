@@ -1,5 +1,4 @@
 .welcome-page-container {
-  background-color: whitesmoke;
   display: flex;
   height: 100vh;
   flex-wrap: wrap;
@@ -13,7 +12,6 @@
 
 .styled-link {
   text-decoration: none;
-  color: darkslategrey;
 }
 
 .form-link {
@@ -29,5 +27,17 @@
 @media (min-width: 480px) and (max-width: 1200px) {
   .container {
     width: 60%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .styled-link {
+    color: #CCCCCC;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .styled-link {
+    color: #0B1114;
   }
 }

@@ -56,8 +56,8 @@ export default function FormContainer(props) {
         <div className='form-container'>
             <div className={open ? 'container' : 'container hide'}>
                 <div className='tabs'>
-                    <button className={form === 'login' ? 'tab' : 'tab active'} onClick={handleForm}>Sign up</button>
-                    <button className={form === 'login' ? 'tab active' : 'tab'} onClick={handleForm}>Login</button>
+                    <button className={form === 'login' ? 'tab' : 'tab active-1'} onClick={handleForm}>Sign up</button>
+                    <button className={form === 'login' ? 'tab active-2' : 'tab'} onClick={handleForm}>Login</button>
                 </div>
                 <form className='login-form' onSubmit={handleSubmit} >
                     <input className="text-input" type="text" value={fields.username} placeholder="Username" name="username" onChange={handleChange} required />

@@ -1,4 +1,4 @@
-.profile-container {
+.about-container {
     display: flex;
     flex-direction: column;
     height: 95vh;
@@ -7,9 +7,10 @@
     margin-left: 40px;
 }
 
-.profile {
+.about {
     display: inherit;
     flex-direction: column;
+    text-align: center;
     height: 750px;
     border-radius: 20px;
     border-bottom: 2px solid black;

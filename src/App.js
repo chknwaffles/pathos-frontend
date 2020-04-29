@@ -34,13 +34,9 @@ function App(props) {
             path="/"
             render={(props) => <WelcomePageContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
           />
-          //could redo the redirect better
           <Route
             path="/chat"
-            render={(props) => user ?
-              <ChatContainer {...props} user={user} handleUserInfo={handleUserInfo} /> :
-              <WelcomePageContainer {...props} user={user} handleUserInfo={handleUserInfo} />
-            }
+            render={(props) => <ChatContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
           />
           <Route
             path="/profile"
