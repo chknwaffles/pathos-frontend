@@ -9,6 +9,7 @@ import MessageForm from "../components/chat/MessageForm";
 import InfoBar from "../components/chat/InfoBar";
 
 const URL = process.env.REACT_APP_URL || "http://localhost:5000";
+//needs to be outside chatcontainer else there is a new call to socket every time this re-renders
 const socket = io(URL);
 
 export default function ChatContainer(props) {
