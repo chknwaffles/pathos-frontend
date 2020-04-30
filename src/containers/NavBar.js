@@ -6,25 +6,28 @@ export default function NavBar(props) {
   const { handleUserInfo } = props;
 
   const handleLogout = async () => {
-    const logout = async () => {
-      try {
-        const userRes = await fetch(`${URL}/users/logout`)
-        const userData = await userRes.json();
+    // const logout = async () => {
+    //   try {
+    //     const userRes = await fetch(`${URL}/users/logout`)
+    //     const userData = await userRes.json();
 
-        return userData
-      } catch (err) {
-        console.log(err)
-      }
-    }
+    //     return userData
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+    // }
 
-    logout().then(data => {
-      if (data.success) {
-        handleUserInfo("");
-        localStorage.removeItem("currentUser");
-      } else {
-        console.log(data.message)
-      }
-    })
+    // logout().then(data => {
+    //   if (data.success) {
+    //     handleUserInfo("");
+    //     localStorage.removeItem("currentUser");
+    //   } else {
+    //     console.log(data.message)
+    //   }
+    // })
+
+    await handleUserInfo("");
+    await localStorage.removeItem("currentUser");
   }
 
   return (

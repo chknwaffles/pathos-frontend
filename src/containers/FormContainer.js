@@ -5,10 +5,10 @@ const URL = process.env.REACT_URL || "http://localhost:5000"
 
 export default function FormContainer(props) {
     const { open, handleClick, handleUserInfo } = props
-    const [form, setForm] = useState('signup')
+    const [form, setForm] = useState('register')
     const [fields, setFields] = useState({ username: '', password: '' })
 
-    const handleForm = () => setForm(form === 'login' ? 'signup' : 'login')
+    const handleForm = () => setForm(form === 'login' ? 'register' : 'login')
     const formTitle = () => {
         return form === 'login' ? 'Login' : 'Sign Up'
     }
@@ -37,8 +37,8 @@ export default function FormContainer(props) {
         }
 
         getUserData().then(data => {
+            console.log(data)
             if (data.success) {
-                console.log(data)
                 handleUserInfo(data.user)
                 localStorage.setItem('currentUser', JSON.stringify(data.user));
                 handleClick();

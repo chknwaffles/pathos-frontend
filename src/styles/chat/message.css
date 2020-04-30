@@ -1,5 +1,11 @@
-.message {
+.message-others {
     padding: .25em;
     text-align: left;
+    overflow-wrap: normal;
+}
+
+.message-user {
+    padding: .25em;
+    text-align: right;
     overflow-wrap: normal;
 }

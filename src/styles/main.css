@@ -18,6 +18,14 @@
   cursor: pointer;
 }
 
+.footer {
+  position: absolute;
+  justify-items: center;
+  align-items: center;
+  top: 80%;
+  left: 50%;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
   .welcome-page-container {
     height: 100%;

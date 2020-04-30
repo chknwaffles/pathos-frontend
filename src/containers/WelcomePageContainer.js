@@ -1,7 +1,9 @@
 import React, { useState, useReducer } from "react";
 import { Link } from "react-router-dom";
-import "../styles/main.css";
+import { GoMarkGithub, GoInfo } from "react-icons/go"
 import FormContainer from "./FormContainer";
+
+import "../styles/main.css";
 
 export default function WelcomePageContainer(props) {
   const { user, handleUserInfo, } = props;
@@ -32,6 +34,11 @@ export default function WelcomePageContainer(props) {
 
       </div>
       <FormContainer open={open} handleClick={handleClick} handleUserInfo={handleUserInfo} />
+
+      <div className="footer">
+        <GoMarkGithub size="1.5em" title="github" />
+        <GoInfo size="1.5em" title="about" />
+      </div>
     </div>
   );
 }

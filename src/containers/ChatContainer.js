@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import "../styles/chat/chat.css";
 import "../styles/navbar.css";
@@ -16,6 +16,7 @@ export default function ChatContainer(props) {
   const { user, handleUserInfo } = props;
   const [log, setLog] = useState([]);
   const [chatroom, setChatroom] = useState("");
+  const chatRef = useRef();
 
   useEffect(() => {
     fetchDefaulChatroom();
@@ -29,7 +30,6 @@ export default function ChatContainer(props) {
         await fetch(URL + "/chatrooms/defaultchatroom")
       ).json();
       await setChatroom(chatroomRes);
-      /// I DONT KNOW IF SHOULD BE or even can await set state lol
 
       const logRes = await (
         await fetch(URL + "/messages/fetchlog/" + chatroomRes.id)
@@ -46,6 +46,8 @@ export default function ChatContainer(props) {
       console.log("log", message);
       setLog([...log, message]);
     });
+
+    chatRef.current.scrollTop = chatRef.current.scrollHeight - chatRef.current.clientHeight;
   }, [log]);
 
   const handleMessageSubmit = async (message) => {
@@ -76,7 +78,7 @@ export default function ChatContainer(props) {
       <InfoBar className="info-bar" />
 
       <div className="chatroom">
-        <div className="chat-log">
+        <div className="chat-log" ref={chatRef}>
           {renderChat()}
         </div>
         <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />

@@ -3,10 +3,10 @@ import React from "react";
 import "../../styles/chat/message.css"
 
 export default function Message({ currentUser, user_id, username, content }) {
-  let isSentByCurrentUser = false;
+  let userMessage = false;
 
   if (currentUser.id === user_id) {
-    isSentByCurrentUser = true;
+    userMessage = true;
   }
 
   const renderTimeStamp = () => {
@@ -24,9 +24,8 @@ export default function Message({ currentUser, user_id, username, content }) {
     return dateTime;
   };
 
-  //// my styling is bad but the general idea is there
   return (
-    <p className="message">
+    <p className={userMessage ? "message-user" : "message-others"}>
       <span> {username} </span>
       <span className="message-body">
         {content}
