@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./styles/mainContainer.css";
 
 //containers
@@ -36,7 +36,12 @@ function App(props) {
           />
           <Route
             path="/chat"
-            render={(props) => <ChatContainer {...props} user={user} handleUserInfo={handleUserInfo} />}
+            render={(props) =>
+              user ?
+                <ChatContainer {...props} user={user} handleUserInfo={handleUserInfo} />
+                :
+                <Redirect to="/" />
+            }
           />
           <Route
             path="/profile"

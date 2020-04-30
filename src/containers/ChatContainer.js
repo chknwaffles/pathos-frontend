@@ -16,9 +16,6 @@ export default function ChatContainer(props) {
   const [log, setLog] = useState([]);
   const [chatroom, setChatroom] = useState("");
 
-  /// I think just leave the socket here is fine... no? then turn it off from the front end when the user logs out or the connection is loss for x amount of time from the backend
-  /// default function loads in chatroom and the log we can use this logic to render other chat rooms in the future
-
   useEffect(() => {
     fetchDefaulChatroom();
   }, []);
@@ -86,38 +83,3 @@ export default function ChatContainer(props) {
     </div>
   );
 }
-
-
-  // ///button action for fetch default user
-  // const fetchDefaultUserOne = async () => {
-  //   try {
-  //     const userRes = await (await fetch(URL + "/users/defaultuser/1")).json();
-  //     handleUserInfo(userRes);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-  // ///button action for fetch 2nd default user
-
-  // const fetchSecondTestUser = async () => {
-  //   try {
-  //     const userRes = await (await fetch(URL + "/users/defaultuser/2")).json();
-  //     handleUserInfo(userRes);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-  // //// just a function to test db/socket persistance, im not too comfortable with it yet, will be deleted later
-  // const renderSocketTesting = () => {
-  //   return user ? (
-  //     <div className="chatroom">
-  //       <div className="chat-log">{renderChat()}</div>
-  //       <MessageForm user={user} handleMessageSubmit={handleMessageSubmit} />
-  //     </div>
-  //   ) : (
-  //       <div className="test-container">
-  //         <button onClick={() => fetchDefaultUserOne()}> fetch user 1 </button>{" "}
-  //         <button onClick={() => fetchSecondTestUser()}>fetch user 2</button>
-  //       </div>
-  //     );
-  // };
