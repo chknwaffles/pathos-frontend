@@ -6,8 +6,7 @@
 
 ## Getting Started
 ### Prerequisites
-Backend Repo available here: 
-
+Backend Repo available [here] 
 ### Installing
 OSX & Linux (Both frontend and backend)
 ```
@@ -21,3 +20,5 @@ Instructions:
 - [Express](https://expressjs.com/) - Server Framework
 - [ReactJs](https://reactjs.org/) - Web Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
+
+[here]: https://github.com/Kirbyasdf/Pathos-Server
